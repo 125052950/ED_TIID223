@@ -54,9 +54,40 @@ class ListasEnlazadas:
             actual = actual.siguiente
         print("None")
 
+    def eliminar_al_inicio(self):
+        #La lista esta vacia
+        if self.cabeza is None:
+            return None  
+
+        nodo_eliminado = self.cabeza
+        self.cabeza = self.cabeza.siguiente
+        nodo_eliminado.siguiente = None
+        return nodo_eliminado.numero
+    
+    def eliminar_al_final(self):
+        #La lista esta vacia
+        if self.cabeza is None:
+            return None 
+
+        if self.cabeza.siguiente is None:
+            nodo_eliminado = self.cabeza
+            self.cabeza = None
+            return nodo_eliminado.numero
+
+        actual = self.cabeza
+        while actual.siguiente.siguiente is not None:
+            actual = actual.siguiente
+
+        nodo_eliminado = actual.siguiente
+        actual.siguiente = None
+        return nodo_eliminado.numero
+
 Mi_Lista = ListasEnlazadas()
 
 Mi_Lista.Insertar_Nodo_al_Final(5)
 Mi_Lista.Insertar_Nodo_al_Final(4)
 Mi_Lista.Insertar_Nodo_al_Final(3)
+Mi_Lista.Imprimir_ListasEnlazadas()
+Mi_Lista.eliminar_al_inicio()
+Mi_Lista.eliminar_al_final()
 Mi_Lista.Imprimir_ListasEnlazadas()
